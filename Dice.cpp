@@ -49,34 +49,34 @@ Dice::Dice(int sides):
 	Dice(1, sides, 1, 0) {};
 
 // Constructor (from string description)
-Dice::Dice(const char* d):
+Dice::Dice(const char* desc):
 	Dice(1, 0, 1, 0) {
 
 	// Check for constant value
 	char *ptr;
-	if (!(ptr = strchr(d, 'd'))) {
+	if (!(ptr = strchr(desc, 'd'))) {
 		number = 0;
-		addition = atoi(d);
+		addition = atoi(desc);
 		return;
 	}
 
 	// Get sides & number
 	sides = atoi(ptr + 1);
-	number = atoi(d);
+	number = atoi(desc);
 	if (number == 0) {
 		number = 1;
 	}
 
 	// Get multiplier or divisor
-	if (ptr = strchr(d, 'x'))
+	if (ptr = strchr(desc, 'x'))
 		multiplier = atoi(ptr + 1);
-	if (ptr = strchr(d, '/'))
+	if (ptr = strchr(desc, '/'))
 		multiplier = - atoi(ptr + 1);
 
 	// Get addition or subtraction
-	if (ptr = strchr(d, '+'))
+	if (ptr = strchr(desc, '+'))
 		addition = atoi(ptr + 1);
-	if (ptr = strchr(d, '-'))
+	if (ptr = strchr(desc, '-'))
 		addition = - atoi(ptr + 1);
 }
 
@@ -135,7 +135,7 @@ int Dice::maxRoll () const {
 
 // Get the average roll
 float Dice::avgRoll() const {
-	return (minRoll() + maxRoll()) / 2.0;
+	return (float) (minRoll() + maxRoll()) / 2;
 }
 
 // Roll with some lower bound
