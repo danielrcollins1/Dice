@@ -38,15 +38,15 @@ Dice::Dice(int num, int sides_, int mul, int add) {
 
 // Constructor (NdS+A)
 Dice::Dice(int num, int sides, int add):
-	Dice(num, sides, 1, add) {};
+	Dice(num, sides, 1, add) {}
 
 // Constructor (NdS)
 Dice::Dice(int num, int sides):
-	Dice(num, sides, 1, 0) {};
+	Dice(num, sides, 1, 0) {}
 
 // Constructor (1dS)
 Dice::Dice(int sides):
-	Dice(1, sides, 1, 0) {};
+	Dice(1, sides, 1, 0) {}
 
 // Constructor (from string description)
 Dice::Dice(const char* desc):
@@ -68,15 +68,15 @@ Dice::Dice(const char* desc):
 	}
 
 	// Get multiplier or divisor
-	if (ptr = strchr(desc, 'x'))
+	if ((ptr = strchr(desc, 'x')))
 		multiplier = atoi(ptr + 1);
-	if (ptr = strchr(desc, '/'))
+	if ((ptr = strchr(desc, '/')))
 		multiplier = - atoi(ptr + 1);
 
 	// Get addition or subtraction
-	if (ptr = strchr(desc, '+'))
+	if ((ptr = strchr(desc, '+')))
 		addition = atoi(ptr + 1);
-	if (ptr = strchr(desc, '-'))
+	if ((ptr = strchr(desc, '-')))
 		addition = - atoi(ptr + 1);
 }
 
